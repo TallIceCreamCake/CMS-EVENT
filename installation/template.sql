@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 09 déc. 2023 à 17:54
+-- Généré le : lun. 25 déc. 2023 à 10:59
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `audiolive_interne`
+-- Base de données : `test`
 --
 
 -- --------------------------------------------------------
@@ -38,6 +38,42 @@ CREATE TABLE `clients` (
   `type` text NOT NULL,
   `image` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `entrepot`
+--
+
+CREATE TABLE `entrepot` (
+  `id` int(11) NOT NULL,
+  `nom` text NOT NULL,
+  `lieu` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `entrepot`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `logs_warehouse`
+--
+
+CREATE TABLE `logs_warehouse` (
+  `id` int(11) NOT NULL,
+  `id_warehouse` int(11) NOT NULL,
+  `text` text NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `time` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `logs_warehouse`
+--
 
 -- --------------------------------------------------------
 
@@ -98,6 +134,23 @@ CREATE TABLE `utilisateur` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Déchargement des données de la table `utilisateur`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `warehouse_stock`
+--
+
+CREATE TABLE `warehouse_stock` (
+  `id` int(11) NOT NULL,
+  `id_equipment` int(11) NOT NULL,
+  `id_warehouse` int(11) NOT NULL,
+  `nb_stockequipment` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
 -- Index pour les tables déchargées
 --
 
@@ -105,6 +158,18 @@ CREATE TABLE `utilisateur` (
 -- Index pour la table `clients`
 --
 ALTER TABLE `clients`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `entrepot`
+--
+ALTER TABLE `entrepot`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `logs_warehouse`
+--
+ALTER TABLE `logs_warehouse`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -136,6 +201,18 @@ ALTER TABLE `clients`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT pour la table `entrepot`
+--
+ALTER TABLE `entrepot`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT pour la table `logs_warehouse`
+--
+ALTER TABLE `logs_warehouse`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT pour la table `materiel`
 --
 ALTER TABLE `materiel`
@@ -151,7 +228,7 @@ ALTER TABLE `reservations`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

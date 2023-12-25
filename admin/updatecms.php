@@ -60,7 +60,7 @@ if ($zip->open($zipFile) === true) {
 }
 
 // Renommer le dossier dézippé
-$newVersionDir = $installationDir . '/new_version/CMS-version-0.1-main';
+$newVersionDir = $installationDir . '/new_version/CMS-EVENT-main';
 if (!rename($newVersionDir, $installationDir . '/new_version/cmsupdate')) {
     echo 'Erreur lors du renommage du dossier dézippé.';
     exit();
@@ -78,6 +78,37 @@ if (file_exists($newVersionConfigFile)) {
         $originalConfigData['version'] = $newVersion;
         file_put_contents($configFile, json_encode($originalConfigData, JSON_PRETTY_PRINT));
     }
+}
+
+// Local version
+$local_version = $originalConfigData['version'];
+
+$github_version_url = 'https://raw.githubusercontent.com/TallIceCreamCake/CMS-EVENT/main/config.json';
+
+// Check if there is an internet connection
+if (checkInternetConnection()) {
+    // Get GitHub version
+    try {
+        $github_version_data = json_decode(file_get_contents($github_version_url), true);
+        $github_version = $github_version_data['version'];
+    } catch (Exception $e) {
+        // Handle error here (e.g., display a message or log)
+        // You can also set $github_version to a default value
+        $github_version = $local_version;
+    }
+} else {
+    // No internet connection, set $github_version to a default value
+    $github_version = $local_version;
+}
+
+// Check if an update is available
+$update_available = (float)$github_version > (float)$local_version && !isset($_GET['update']);
+
+// If an update is available, you can redirect or show a message
+if ($update_available) {
+    // Redirect with update parameter
+    header('Location: index.php?update=1');
+    exit();
 }
 
 // Effectuer la mise à jour
