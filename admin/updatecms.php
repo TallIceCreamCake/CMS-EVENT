@@ -3,7 +3,7 @@
 $configFile = __DIR__ . '/../config.json';
 
 // URL du fichier de mise à jour sur GitHub
-$githubFilesUrl = 'https://github.com/TallIceCreamCake/CMS-version-0.1/archive/main.zip';
+$githubFilesUrl = 'https://github.com/TallIceCreamCake/CMS-EVENT/archive/main.zip';
 
 // Répertoire d'installation du CMS
 $installationDir = __DIR__ . '/..';

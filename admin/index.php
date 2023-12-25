@@ -27,7 +27,7 @@ if ($config_data['isconfig?'] === "false") {
   header("Location: ../installation");
 }
 $local_version = $config_data['version'];
-$github_version_url = 'https://raw.githubusercontent.com/TallIceCreamCake/CMS-version-0.1/main/config.json';
+$github_version_url = 'https://raw.githubusercontent.com/TallIceCreamCake/CMS-EVENT/main/config.json';
 
 // Check if there is an internet connection
 if (checkInternetConnection()) {
