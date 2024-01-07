@@ -5,5 +5,5 @@
     "db_host": "localhost",
     "name": "Test",
     "isconfig?": "false",
-    "version": "3"
+    "version": "1.2"
 }
