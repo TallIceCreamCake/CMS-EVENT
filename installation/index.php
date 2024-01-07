@@ -9,35 +9,80 @@
 </head>
 
 <body class="bg-gray-200 p-8">
-    <div class="max-w-md mx-auto bg-white p-8 rounded-md shadow-md">
-        <!-- Stepper -->
-        <ol class="flex items-center w-full text-sm font-medium text-center text-gray-500 dark:text-gray-400 sm:text-base mb-6">
-            <li class="flex-1 md:w-full flex items-center justify-center">
-                <div class="w-4 h-4 rounded-full bg-blue-600"></div>
-                <span class="ml-2.5">Personal Info</span>
-            </li>
-            <li class="flex-1 md:w-full flex items-center justify-center">
-                <div class="w-4 h-4 rounded-full bg-gray-200 dark:bg-gray-700"></div>
-                <span class="ml-2.5">Account Info</span>
-            </li>
-            <li class="flex-1 md:w-full flex items-center justify-center">
-                <div class="w-4 h-4 rounded-full bg-gray-200 dark:bg-gray-700"></div>
-                <span class="ml-2.5">Confirmation</span>
-            </li>
-        </ol>
-
-        <h1 class="text-2xl font-bold mb-4">CMS Configuration</h1>
-        <p class="text font-bold mb-4">VERSION CMS : V2.1 BETA</p>
+    <div class="max-w-xl mx-auto bg-white p-8 rounded-md shadow-md">
+        <h1 class="text-2xl font-bold mb-4 text-center">Configuration du CMS</h1>
 
         <form id="configForm" action="process.php" method="post">
             <!-- Step 1 -->
             <div id="step1" class="mb-4">
+                
+<ol class="items-center w-full space-y-4 sm:flex sm:space-x-8 sm:space-y-0 rtl:space-x-reverse">
+    <li class="flex items-center text-blue-600 dark:text-blue-500 space-x-2.5 rtl:space-x-reverse">
+        <span class="flex items-center justify-center w-8 h-8 border border-blue-600 rounded-full shrink-0 dark:border-blue-500">
+            1
+        </span>
+        <span>
+            <h3 class="font-medium leading-tight">Infos CMS</h3>
+            <p class="text-sm">Nom</p>
+        </span>
+    </li>
+    <li class="flex items-center text-gray-500 dark:text-gray-400 space-x-2.5 rtl:space-x-reverse">
+        <span class="flex items-center justify-center w-8 h-8 border border-gray-500 rounded-full shrink-0 dark:border-gray-400">
+            2
+        </span>
+        <span>
+            <h3 class="font-medium leading-tight">Base de donnée</h3>
+            <p class="text-sm">Mysql</p>
+        </span>
+    </li>
+    <li class="flex items-center text-gray-500 dark:text-gray-400 space-x-2.5 rtl:space-x-reverse">
+        <span class="flex items-center justify-center w-8 h-8 border border-gray-500 rounded-full shrink-0 dark:border-gray-400">
+            3
+        </span>
+        <span>
+            <h3 class="font-medium leading-tight">Compte</h3>
+            <p class="text-sm">Création du compte</p>
+        </span>
+    </li>
+</ol><br>
+
+
                 <label for="field1" class="block text-gray-700 text-sm font-bold mb-2">Nom de l'entreprise :</label>
                 <input type="text" id="field1" name="field1" class="w-full border p-2 rounded">
             </div>
 
             <!-- Step 2 -->
             <div id="step2" class="mb-4 hidden">
+                                
+<ol class="items-center w-full space-y-4 sm:flex sm:space-x-8 sm:space-y-0 rtl:space-x-reverse">
+    <li class="flex items-center text-blue-600 dark:text-blue-500 space-x-2.5 rtl:space-x-reverse">
+        <span class="flex items-center justify-center w-8 h-8 border border-blue-600 rounded-full shrink-0 dark:border-blue-500">
+            1
+        </span>
+        <span>
+            <h3 class="font-medium leading-tight">Infos CMS</h3>
+            <p class="text-sm">Nom</p>
+        </span>
+    </li>
+    <li class="flex items-center text-blue-600 dark:text-blue-500 space-x-2.5 rtl:space-x-reverse">
+        <span class="flex items-center justify-center w-8 h-8 border border-blue-600 rounded-full shrink-0 dark:border-blue-500">
+            2
+        </span>
+        <span>
+            <h3 class="font-medium leading-tight">Base de donnée</h3>
+            <p class="text-sm">Mysql</p>
+        </span>
+    </li>
+    <li class="flex items-center text-gray-500 dark:text-gray-400 space-x-2.5 rtl:space-x-reverse">
+        <span class="flex items-center justify-center w-8 h-8 border border-gray-500 rounded-full shrink-0 dark:border-gray-400">
+            3
+        </span>
+        <span>
+            <h3 class="font-medium leading-tight">Compte</h3>
+            <p class="text-sm">Création du compte</p>
+        </span>
+    </li>
+</ol><br>
                 <label for="dbHost" class="block text-gray-700 text-sm font-bold mb-2">IP/Liens de mysql :</label>
                 <input type="text" id="dbHost" name="dbHost" class="w-full border p-2 rounded mb-2">
 
@@ -53,6 +98,36 @@
 
             <!-- Step 3 -->
             <div id="step3" class="mb-4 hidden">
+                                
+<ol class="items-center w-full space-y-4 sm:flex sm:space-x-8 sm:space-y-0 rtl:space-x-reverse">
+    <li class="flex items-center text-blue-600 dark:text-blue-500 space-x-2.5 rtl:space-x-reverse">
+        <span class="flex items-center justify-center w-8 h-8 border border-blue-600 rounded-full shrink-0 dark:border-blue-500">
+            1
+        </span>
+        <span>
+            <h3 class="font-medium leading-tight">Infos CMS</h3>
+            <p class="text-sm">Nom</p>
+        </span>
+    </li>
+    <li class="flex items-center text-blue-600 dark:text-blue-500 space-x-2.5 rtl:space-x-reverse">
+        <span class="flex items-center justify-center w-8 h-8 border border-blue-600 rounded-full shrink-0 dark:border-blue-500">
+            2
+        </span>
+        <span>
+            <h3 class="font-medium leading-tight">Base de donnée</h3>
+            <p class="text-sm">Mysql</p>
+        </span>
+    </li>
+    <li class="flex items-center text-blue-600 dark:text-blue-500 space-x-2.5 rtl:space-x-reverse">
+        <span class="flex items-center justify-center w-8 h-8 border border-blue-600 rounded-full shrink-0 dark:border-blue-500">
+            3
+        </span>
+        <span>
+            <h3 class="font-medium leading-tight">Compte</h3>
+            <p class="text-sm">Création du compte</p>
+        </span>
+    </li>
+</ol><br>
                 <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Nom d'utilisateur :</label>
                 <input type="text" id="username" name="username" class="w-full border p-2 rounded mb-2">
 
