@@ -180,7 +180,7 @@ $couleur4 = $reservation['step4'] == 1 ? '#ff9900' : ($reservation['step4'] == 2
     const rows = document.querySelectorAll("#customers tbody tr");
 
     rows.forEach(row => {
-        const nomCell = row.querySelector("td:nth-child(2)");
+        const nomCell = row.querySelector("td:nth-child(3)");
         if (nomCell) {
             const nom = nomCell.textContent.toLowerCase();
             // Affichez toutes les lignes si le champ de recherche est vide
@@ -199,7 +199,7 @@ $couleur4 = $reservation['step4'] == 1 ? '#ff9900' : ($reservation['step4'] == 2
             const rows = document.querySelectorAll("#customers tbody tr");
 
             rows.forEach(row => {
-                const clientCell = row.querySelector("td:nth-child(3)");
+                const clientCell = row.querySelector("td:nth-child(5)");
                 if (clientCell) {
                     const client = clientCell.textContent.toLowerCase();
                     if (client.includes(searchClientTerm)) {

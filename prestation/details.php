@@ -68,6 +68,89 @@ if ($result->num_rows > 0) {
     }
 }
 
+$step1_button1 = $reservation_details['step1'];
+$step2_button2 = $reservation_details['step2'];
+$step3_button3 = $reservation_details['step3'];
+$step4_button4 = $reservation_details['step4'];
+
+if ($step1_button1 == 0){
+    $button1 = '<form action="step1process.php" method="post">
+
+    
+    <input type="hidden" name="reservation_id" value="' . $reservation_details['id'] . '">
+    <button type="submit" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+        1
+    </button>
+</form>';
+} elseif ($step1_button1 == 1) {
+    $button1 = ' <form action="step1process.php" method="post">
+    <input type="hidden" name="reservation_id" value="' . $reservation_details['id'] . '">
+    <button type="submit" class="px-4 py-2 text-sm font-medium text-yellow-400 bg-white border border-yellow-400	 rounded-s-lg hover:bg-gray-100 hover:text-yellow-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+    1
+  </button></form>';
+} elseif ($step1_button1 == 2) {
+    $button1 = ' <button type="button" class="px-4 py-2 text-sm font-medium text-green-500 bg-white border border-green-500 rounded-s-lg hover:bg-gray-100 hover:text-green-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white" disabled>
+    1
+  </button>';
+}
+
+if ($step2_button2 == "0"){
+    $button2 = '<form action="step2process.php" method="post">
+    <input type="hidden" name="reservation_id" value="' . $reservation_details['id'] . '">
+    <button type="submit" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+        2
+    </button>
+</form>';
+} elseif ($step2_button2 == "1") {
+    $button2 = '<form action="step2process.php" method="post">
+    <input type="hidden" name="reservation_id" value="' . $reservation_details['id'] . '">
+    <button type="submit" class="px-4 py-2 text-sm font-medium text-yellow-400 bg-white border border-yellow-400	  hover:bg-gray-100 hover:text-yellow-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+    2
+  </button></form>';
+} elseif ($step2_button2 == "2") {
+    $button2 = '  <button type="button" class="px-4 py-2 text-sm font-medium text-green-500 bg-white border border-green-500  hover:bg-gray-100 hover:text-green-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white" disabled>
+    2
+  </button>';
+}
+
+if ($step3_button3 == "0"){
+    $button3 = '<form action="step3process.php" method="post">
+    <input type="hidden" name="reservation_id" value="' . $reservation_details['id'] . '">
+    <button type="submit" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200  hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+        3
+    </button>
+</form>';
+} elseif ($step3_button3 == "1") {
+    $button3 = '<form action="step3process.php" method="post">
+    <input type="hidden" name="reservation_id" value="' . $reservation_details['id'] . '">
+    <button type="submit" class="px-4 py-2 text-sm font-medium text-yellow-400 bg-white border border-yellow-400	  hover:bg-gray-100 hover:text-yellow-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+    3
+  </button></form>';
+} elseif ($step3_button3 == "2") {
+    $button3 = '<button type="button" class="px-4 py-2 text-sm font-medium text-green-500 bg-white border border-green-500  hover:bg-gray-100 hover:text-green-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white" disabled>
+    3
+  </button>';
+}
+
+if ($step4_button4 == "0"){
+    $button4 = '<form action="step4process.php" method="post">
+    <input type="hidden" name="reservation_id" value="' . $reservation_details['id'] . '">
+    <button type="submit" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+        4
+    </button>
+</form>';
+} elseif ($step4_button4 == "1") {
+    $button4 = '<form action="step4process.php" method="post">
+    <input type="hidden" name="reservation_id" value="' . $reservation_details['id'] . '">
+    <button type="submit" class="px-4 py-2 text-sm font-medium text-yellow-400 bg-white border border-yellow-400	 rounded-r-lg hover:bg-gray-100 hover:text-yellow-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+    4
+  </button></form>';
+} elseif ($step4_button4 == "2") {
+    $button4 = '<button type="button" class="px-4 py-2 text-sm font-medium text-green-500 bg-white border border-green-500 rounded-r-lg hover:bg-gray-100 hover:text-green-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white" disabled>
+    4
+  </button>';
+}
+
 ?>
 
 <!-- Le reste de votre code HTML reste inchangé -->
@@ -306,15 +389,6 @@ if ($result->num_rows > 0) {
             </div>
 
             <div class="relative z-0 w-full mb-5 group">
-                <input type="text" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="client" name="client" list="suggestions" value="<?php echo $reservation_details['clients']; ?>">
-                <label for="client" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Client :</label>
-
-                <datalist id="suggestions">
-                    <!-- Liste des clients (identique à la page de création) -->
-                </datalist>
-            </div>
-
-            <div class="relative z-0 w-full mb-5 group">
                 <input type="number" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="prix" name="prix" value="<?php echo $reservation_details['prix']; ?>">
                 <label for="prix" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Prix :</label>
             </div>
@@ -348,6 +422,24 @@ if ($result->num_rows > 0) {
     Fermer
   </button>
   </form>
+</div>
+<div class="flex flex-col inline-flex rounded-md shadow-sm pt-[1rem]" role="group">
+<p class="text-xl pb-[1rem]">Status</p>
+<div class="inline-flex"><?php 
+    echo $button1;
+    echo $button2;
+    echo $button3;
+    echo $button4;
+?></div>
+<ul class="pt-5">
+    <li>1 = préparation sur le site</li>
+    <li>2 = préparation équipement</li>
+    <li>3 = facturation faite</li>
+    <li>4 = tout est terminé (paiment reçu)</li>
+    <li>Blanc = pas commencé</li>
+    <li>Jaune = en cours</li>
+    <li>Vert = terminé</li>
+</ul>
 </div>
     </div>
 </div>
@@ -436,7 +528,6 @@ $conn->close();
 
 
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><?php echo $reservation_details['description']; ?></p>
-
         <div class="inline-flex rounded-md shadow-sm" role="group">
   <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-red-500 rounded-s-lg hover:bg-gray-100 hover:text-red-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
     Supprimer
@@ -446,7 +537,19 @@ $conn->close();
     Fermer
   </button>
   </form>
+  <div class="mt-8">
+    
+</div>
 
+</div>
+<div class="inline-flex rounded-md shadow-sm inline pt-[1rem]" role="group">
+
+<?php 
+    echo $button1;
+    echo $button2;
+    echo $button3;
+    echo $button4;
+?>
 </div>
     </div>
 </div>

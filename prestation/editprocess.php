@@ -31,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $date_debut = $_POST['date_debut'];
         $date_fin = $_POST['date_fin'];
         $type = $_POST['type'];
-        $client = $_POST['client'];
         $prix = $_POST['prix'];
         $color = $_POST['color'];
 
@@ -39,8 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $materiel = isset($_POST['material']) ? implode(",", $_POST['material']) : '';
 
         // Requête pour mettre à jour la réservation dans la base de données
-        $query = $db->prepare("UPDATE reservations SET nom = ?, description = ?, date_debut = ?, date_fin = ?, color = ?, type = ?, clients = ?, prix = ?, materiel = ? WHERE id = ?");
-        $query->bind_param("sssssssssi", $nom, $description, $date_debut, $date_fin, $color, $type, $client, $prix, $materiel, $reservation_id);
+        $query = $db->prepare("UPDATE reservations SET nom = ?, description = ?, date_debut = ?, date_fin = ?, color = ?, type = ?, prix = ?, materiel = ? WHERE id = ?");
+        $query->bind_param("ssssssssi", $nom, $description, $date_debut, $date_fin, $color, $type, $prix, $materiel, $reservation_id);
 
         if ($query->execute()) {
             // Redirigez vers la page de détails de la réservation mise à jour

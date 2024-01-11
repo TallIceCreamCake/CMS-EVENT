@@ -60,7 +60,7 @@ function checkInternetConnection() {
     <meta charset="utf-8">
     <title>Paramètre du CMS</title>
     <!-- Importer le fichier de style Bootstrap -->
-    <script src="../tailwind.js"></script>
+    <script src="../components/tailwind.js"></script>
         <style>
         .location-event {
             background-color: #b52424;
@@ -159,7 +159,7 @@ function checkInternetConnection() {
     <div id="tab2Content" class="hidden">
     <div class="mx-auto my-10 flex flex-wrap flex-row">
     
-    <div class="basis-1/3 w-1/3 flex-1 mr-[5rem] ml-[1rem] border rounded p-4 shadow-md">
+    <div class="basis-full w-full flex-1 mr-[1rem] border rounded p-4 shadow-md">
     <div class="flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800" role="alert">
   <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
     <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>

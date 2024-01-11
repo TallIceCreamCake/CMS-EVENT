@@ -122,7 +122,7 @@ $showAdminLink = ($role === 'admin');
 <head>
     <meta charset="utf-8">
     <title>Index</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./components/tailwind.js"></script>
     <style>
     .location-event {
         background-color: #b52424;
@@ -254,10 +254,10 @@ if (isset($_GET['update'])) {
                     <?php foreach ($equipementsdb as $equipement) : ?>
                         <tr class="bg-white">
                             <td class="text-l px-6 py-2">
-                                <?php echo $equipement['nom']; ?>
+                                <p class="text-base"><?php echo $equipement['nom']; ?></p>
                             </td>
                             <td class="text-l px-6 py-2">
-                            <span class="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold text-green-800 bg-green-500 rounded-full"></span> En stock
+                            <span class="flex items-center text-sm font-medium text-gray-900 dark:text-white me-3"><span class="flex w-2.5 h-2.5 bg-green-600 rounded-full me-1.5 flex-shrink-0"></span>En Stock</span>
                             </td>
                         </tr>
                     <?php endforeach; ?>

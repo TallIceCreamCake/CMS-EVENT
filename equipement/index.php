@@ -150,6 +150,30 @@ if ($result->num_rows > 0) {
 
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js"></script>
 <script>
+            const searchPrestationInput = document.getElementById("searchPrestationInput");
+
+        function searchByPrestation() {
+    const searchPrestationTerm = searchPrestationInput.value.toLowerCase();
+    const rows = document.querySelectorAll("#customers tbody tr");
+
+    rows.forEach(row => {
+        const nomCell = row.querySelector("td:nth-child(2)");
+        if (nomCell) {
+            const nom = nomCell.textContent.toLowerCase();
+            // Affichez toutes les lignes si le champ de recherche est vide
+            if (searchPrestationTerm === '' || nom.includes(searchPrestationTerm)) {
+                row.style.display = "table-row";
+            } else {
+                row.style.display = "none";
+            }
+        }
+    });
+}
+searchPrestationInput.addEventListener("input", searchByPrestation);
+
+</script>
+
+<script>
     document.addEventListener("DOMContentLoaded", function () {
         var calendarEl = document.getElementById("calendrier");
 

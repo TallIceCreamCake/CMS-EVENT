@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // If an existing entry is found, update the quantity
     if ($existing_stock_id) {
-        $new_quantity = $existing_quantity + $quantitypost;
+        $new_quantity = $quantitypost;  // Utilisez directement la quantité fournie dans le formulaire
         $update_query = $db->prepare("UPDATE warehouse_stock SET nb_stockequipment = ? WHERE id = ?");
         $update_query->bind_param("ss", $new_quantity, $existing_stock_id);
         $update_query->execute();
@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Rest of your code...
 
     // Log the event in logs_warehouse table
-    $legend = "Matériel ajouté dans l'entrepôt : $name (QT : $quantitypost)";
+    $legend = "Equipement modifié : $name (QT : $quantitypost)";
     $date = date('Y-m-d');
     $time = date('H:i:s');
 

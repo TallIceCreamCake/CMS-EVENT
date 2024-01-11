@@ -6,15 +6,15 @@
             <a class="text-2xl text-white font-semibold" href="#" data-config-id="brand">
               <img class="h-10" src="artemis-assets/logos/artemis-logo.svg" alt="" width="auto">
             </a>
-            <button class="navbar-burger flex items-center rounded focus:outline-none">
-              <svg class="text-white bg-indigo-500 hover:bg-indigo-600 block h-8 w-8 p-2 rounded" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="currentColor" data-config-id="auto-svg-1-1">
-                <title>Mobile menu</title>
-                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-              </svg>
-            </button>
+            <button data-collapse-toggle="navbar-hamburger" type="button" class="inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-hamburger" aria-expanded="false">
+      <span class="sr-only">Open main menu</span>
+      <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+      </svg>
+    </button>
           </div>
         </nav>
-        <div class="hidden lg:block navbar-menu relative z-50">
+        <div class="hidden lg:block navbar-menu relative z-50" id="navbar-hamburger">
           <div class="navbar-backdrop fixed lg:hidden inset-0 bg-gray-800 opacity-10"></div>
           <nav class="fixed top-0 left-0 bottom-0 flex flex-col w-3/4 lg:w-80 sm:max-w-xs pt-6 pb-8 bg-gray-800 overflow-y-auto">
             <div class="flex w-full items-center px-6 pb-6 mb-6 lg:border-b border-gray-700">
@@ -22,8 +22,33 @@
                 <img class="h-8" src="artemis-assets/logos/artemis-logo.svg" alt="" width="auto"> <?php echo $config_data['name']; ?>
               </a>
             </div>
+            
             <div class="px-4 pb-6">
               <ul class="mb-8 text-sm font-medium">
+              <button
+  data-collapse-toggle="navbar-hamburger"
+  type="button"
+  class="lg:hidden lg:flex items-center justify-center absolute top-12 right-6 p-2 w-10 h-10 text-sm text-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+  aria-controls="navbar-hamburger"
+  aria-expanded="true"
+>
+  <span class="sr-only">Open main menu</span>
+  <svg
+    class="w-5 h-5"
+    aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 17 17"
+  >
+    <path
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M1 1l15 15M16 1L1 16"
+    />
+  </svg>
+</button>
                 <li>
                   <a class="flex items-center pl-3 py-3 pr-4 text-gray-50 hover:bg-gray-900 rounded" href="<?php echo $basePath; ?>">
                     <span class="inline-block mr-3">

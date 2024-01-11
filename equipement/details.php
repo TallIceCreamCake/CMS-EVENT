@@ -136,7 +136,7 @@ if ($config_data['isconfig?'] === "false") {
 
 <!-- Modal toggle -->
 <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-  Ajouter du stock
+Modifier le stock
 </button>
 <!-- Main modal -->
 <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -146,7 +146,7 @@ if ($config_data['isconfig?'] === "false") {
             <!-- Modal header -->
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                    Ajouter du stock
+                    Modifier le stock
                 </h3>
                 <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -159,33 +159,75 @@ if ($config_data['isconfig?'] === "false") {
             <form class="p-4 md:p-5" action="addstockprocess.php" method="post">
             <input type="hidden" name="matos_id" value="<?php echo $matos_detail['id']; ?>">
             <input type="hidden" name="matos_name" value="<?php echo $matos_detail['nom']; ?>">
+
             <div class="relative z-0 w-full mb-5 group">
-    <label for="stock" class="block  text-sm font-medium text-gray-900 dark:text-white">Choisir le stock :</label>
+    <label for="stock" class="block text-sm font-medium text-gray-900 dark:text-white">Choisir le stock :</label>
     <div class="relative flex items-center">
-    <select name="stock" id="stock" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer" required>
-    <option value="" disabled selected>Choisir l'entrepôt</option>
-    <?php
-    // Utilisez votre connexion existante à la base de données
-    // Assurez-vous que votre connexion est stockée dans la variable $votre_connexion_mysql
-    // Remplacez 'VotreTableEntrepot' par le nom réel de votre table
-    // Remplacez 'id_entrepot' et 'nom_entrepot' par les colonnes réelles de votre table
+        <select name="stock" id="stock" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer" required>
+            <option value="" disabled selected>Choisir l'entrepôt</option>
+            <?php
+            $query_stock2 = $db->prepare("SELECT * FROM warehouse_stock WHERE id_equipment = ?");
+            $query_stock2->bind_param("i", $matos_detail['id']);
+            $query_stock2->execute();
+            $result_stock2 = $query_stock2->get_result();
+            $row_stock2 = $result_stock2->fetch_assoc();
 
-    $query_entrepots = "SELECT * FROM entrepot";
-    $result_entrepots = mysqli_query($db, $query_entrepots);
+            $row_stock2_json = json_encode($row_stock2);
 
-    // Affichez les options dans le menu déroulant
-    while ($row_entrepot = mysqli_fetch_assoc($result_entrepots)) {
-        echo "<option value='{$row_entrepot['id']}'>{$row_entrepot['nom']}</option>";
-    }
-    ?>
-</select>
-        <input type="text" id="quantity_stock" name="quantity_stock" data-input-counter aria-describedby="helper-text-explanation" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Quantité" required>
+            $query_entrepots = "SELECT * FROM entrepot";
+            $result_entrepots = mysqli_query($db, $query_entrepots);
+
+            // Affichez les options dans le menu déroulant
+            while ($row_entrepot = mysqli_fetch_assoc($result_entrepots)) {
+                echo "<option value='{$row_entrepot['id']}'>{$row_entrepot['nom']}</option>";
+            }
+            ?>
+        </select>
+
+        <script>
+document.addEventListener("DOMContentLoaded", function() {
+    const inputQuantite = document.getElementById("quantity_stock");
+    const selectWarehouse = document.getElementById("stock");
+    const quantitiesJson = <?php 
+    
+    $quantities_by_warehouse = [];
+$query_stock = $db->prepare("SELECT * FROM warehouse_stock WHERE id_equipment = ?");
+$query_stock->bind_param("i", $matos_detail['id']);
+$query_stock->execute();
+$result_stock = $query_stock->get_result();
+
+while ($row_stock = $result_stock->fetch_assoc()) {
+    $id_warehouse = $row_stock['id_warehouse'];
+    $quantities_by_warehouse[$id_warehouse] = $row_stock['nb_stockequipment'];
+}
+
+$quantities_json = json_encode($quantities_by_warehouse);
+    
+    echo $quantities_json; 
+    
+    
+    ?>;
+
+    // Ajouter un écouteur d'événements 'change' au select
+    selectWarehouse.addEventListener("change", function () {
+        // Récupérer l'id de l'entrepôt sélectionné
+        const selectedWarehouseId = selectWarehouse.value;
+
+        // Récupérer la quantité associée à l'entrepôt depuis le JSON
+        const selectedWarehouseQuantity = quantitiesJson[selectedWarehouseId];
+
+        // Mettre à jour le champ de quantité
+        inputQuantite.value = selectedWarehouseQuantity;
+    });
+});
+</script>
+
+        <input value="" type="number" id="quantity_stock" name="quantity_stock" data-input-counter aria-describedby="helper-text-explanation" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Quantité" required>
     </div>
-  </div> <br>
-            <button type="submit" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Ajouter le stock</button>
-        </form>
-        </div>
-    </div>
+    <br><button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Enregistrer</button>
+
+</div>
+    </div></div>
 </div> 
 <br>
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -194,6 +236,7 @@ $query_stock = $db->prepare("SELECT * FROM warehouse_stock WHERE id_equipment = 
 $query_stock->bind_param("i", $matos_detail['id']);
 $query_stock->execute();
 $result_stock = $query_stock->get_result();
+
 
 // Vérifiez si $result_stock contient des lignes
 if ($result_stock->num_rows > 0) {
@@ -221,6 +264,7 @@ if ($result_stock->num_rows > 0) {
             while ($row_stock = $result_stock->fetch_assoc()) {
                 $id_warehouse = $row_stock['id_warehouse'];
 
+                
                 $query_warehouse = $db->prepare("SELECT * FROM entrepot WHERE id = ?");
                 $query_warehouse->bind_param("i", $id_warehouse);
                 $query_warehouse->execute();
@@ -257,9 +301,6 @@ if ($result_stock->num_rows > 0) {
 
 </div>
 </body>
-
-
-
 
 
 <script>

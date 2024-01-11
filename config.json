@@ -4,6 +4,6 @@
     "db_password": "",
     "db_host": "localhost",
     "name": "Test",
-    "isconfig?": "false",
+    "isconfig?": "true",
     "version": "1.2"
 }
